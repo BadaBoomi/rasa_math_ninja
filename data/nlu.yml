@@ -1,0 +1,95 @@
+version: "2.0"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - yes please
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: request_help
+  examples: |
+    - do not get it
+    - can you please explain again
+    - explain it again
+    - how does it work
+    - have no clue
+- intent: challenge_me
+  examples: |
+    - let us play [mult by eleven]{"entity": "quest_type", "value": "mult by 11"}
+    - give me a [multiplication with eleven]{"entity": "quest_type", "value": "mult by 11"} quest
+    - let us play [mult by 11](quest_type)
+    - give me a [multiplication with 11]{"entity": "quest_type", "value": "mult by 11"} quest
+    - I'd like to play [multiplications]{"entity": "quest_type", "value": "simple multiplication"}
+    - let us [multiply]{"entity": "quest_type", "value": "simple multiplication"}
+- intent: inform
+  examples: |
+    - it is [23](number)
+    - [45](number)
+    - makes [5](number)
+    - [76](number)
+    - it is [55](number)
+    - must be [43](number)
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: stop_intent
+  examples: |
+    - stop
+    - halt
+    - i don not want to continue
+    - this is boring
+    - let us stop
+    - stop it
+    - shut up
+- synonym: mult by 11
+  examples: |
+    - mult by eleven
+    - multiplication with eleven
+    - multiplication with 11
+- synonym: simple multiplication
+  examples: |
+    - multiplications
+    - multiply

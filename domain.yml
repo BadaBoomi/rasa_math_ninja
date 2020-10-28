@@ -1,0 +1,72 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet
+- inform
+- affirm
+- goodbye
+- deny
+- challenge_me
+- bot_challenge
+- stop_intent
+entities:
+- number
+- quest_type
+slots:
+  quest:
+    type: text
+    initial_value: 44 multiplied by 11
+    influence_conversation: true
+  quest_type:
+    type: categorical
+    initial_value: mult by 11
+    influence_conversation: true
+    values:
+    - mult by 11
+    - simple multiplication
+    - __other__
+  requested_slot:
+    type: text
+    influence_conversation: false
+  solution:
+    type: any
+    initial_value: 484
+    influence_conversation: false
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_explain:
+  - text: this game goes like...
+  utter_quest:
+  - text: What is 4 by 11?
+  utter_ask_again:
+  - text: want to play again?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_quest_form_number:
+  - text: what is {quest}?
+  utter_submit_quest_form:
+  - text: 'that was correct '
+actions:
+- utter_ask_again
+- utter_explain
+- utter_greet
+- utter_submit_quest_form
+forms:
+  quest_form:
+    number:
+    - type: from_entity
+      entity: number
+      intent: none
+      not_intent: stop_intent
+version: '2.0'

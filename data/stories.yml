@@ -1,0 +1,70 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_explain
+  - action: quest_form
+  - active_loop: quest_form
+  - slot_was_set:
+    - requested_slot: number
+  - intent: inform
+    entities:
+    - number: 76
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit_quest_form
+  - checkpoint: repeat_quest
+
+- story: ask for repeat_quest - Yes
+  steps:
+  - checkpoint: repeat_quest
+  - action: utter_ask_again
+  - intent: affirm
+  - action: quest_form
+  - active_loop: quest_form
+  - slot_was_set:
+    - requested_slot: number
+  - intent: inform
+    entities:
+    - number: 43
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit_quest_form
+  - checkpoint: repeat_quest
+
+- story: ask for repeat_quest - No
+  steps:
+  - checkpoint: repeat_quest
+  - action: utter_ask_again
+  - intent: deny
+  - action: utter_goodbye
+
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_explain
+  - action: quest_form
+  - active_loop: quest_form
+  - slot_was_set:
+    - requested_slot: number
+  - intent: inform
+    entities:
+    - number: 55
+  - action: action_deactivate_loop
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_submit_quest_form
+  - checkpoint: repeat_quest
+
+ 
